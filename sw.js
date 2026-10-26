@@ -37,7 +37,9 @@ function getKey() {
 }
 const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 const dec = (key, bytes) => crypto.subtle.decrypt({ name: "AES-GCM", iv: bytes.slice(0, 12) }, key, bytes.slice(12));
-const page = (text, status = 200) => new Response(text, { status, headers: { "Content-Type": TYPES.html, "Cache-Control": "no-store" } });
+// every page this worker serves refuses to sit in another site's frame (GitHub Pages sends no such header)
+const HTML = { "Content-Type": TYPES.html, "Cache-Control": "no-store", "X-Frame-Options": "SAMEORIGIN", "Content-Security-Policy": "frame-ancestors 'self'" };
+const page = (text, status = 200) => new Response(text, { status, headers: HTML });
 
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", e => e.waitUntil(self.clients.claim()));
@@ -58,7 +60,7 @@ async function serve(url) {
     const text = await res.text();
     const m = text.match(/<script type="text\/plain" id="ct">([A-Za-z0-9+/=]+)<\/script>/);
     if (!key || !m) return page(text);
-    try { return new Response(await dec(key, b64(m[1])), { headers: { "Content-Type": TYPES.html, "Cache-Control": "no-store" } }); }
+    try { return new Response(await dec(key, b64(m[1])), { headers: HTML }); }
     catch (e) { return page(text.replace('data-state="locked"', 'data-state="wrong"')); }   // the token changed since this device unlocked
   }
   if (!key) return new Response("Locked", { status: 403 });

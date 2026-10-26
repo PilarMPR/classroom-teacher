@@ -44,12 +44,15 @@
     else navigator.serviceWorker.addEventListener("controllerchange", () => location.reload(), { once: true });
   }
 
-  // A key is saved but no worker is running (first visit in a new tab, or the browser dropped it): start it once.
-  if (document.body.dataset.state !== "wrong" && !navigator.serviceWorker.controller) {
-    loadKey().then(k => {
-      if (k && k.key && !sessionStorage.getItem("cl-restart")) { sessionStorage.setItem("cl-restart", "1"); say("Opening…"); startWorker(); }
-    }).catch(() => {});
-  }
+  // An expired key is deleted as soon as this page loads, not only when the worker next sees a request
+  // (security audit 2026-10-26). A key in date with no worker running (a new tab, or the browser dropped it):
+  // start the worker once.
+  const MAX_AGE = 30 * 24 * 60 * 60 * 1000;   // must match sw.js
+  loadKey().then(k => {
+    if (!k) return;
+    if (!k.key || typeof k.at !== "number" || Date.now() - k.at >= Math.min(MAX_AGE, k.ttl || MAX_AGE)) { keyStore("readwrite", s => s.delete("key")).catch(() => {}); return; }
+    if (document.body.dataset.state !== "wrong" && !navigator.serviceWorker.controller && !sessionStorage.getItem("cl-restart")) { sessionStorage.setItem("cl-restart", "1"); say("Opening…"); startWorker(); }
+  }).catch(() => {});
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
