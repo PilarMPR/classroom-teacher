@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; media-src 'self' data: blob:; frame-src 'self' blob: data:; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Staff · Miss Rojo's Classroom</title>
+<style>
+:root{--paper:#FBFAF7;--card:#fff;--ink:#1B2130;--muted:#556072;--line:#D6DAE0;--accent:#6B3FB8;--bad:#BF3A2C}
+@media (prefers-color-scheme:dark){:root{--paper:#13171E;--card:#1B212B;--ink:#E8ECF2;--muted:#A4ADBB;--line:#323A47;--accent:#B99BF2;--bad:#F27D7D}}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:18px;background:var(--paper);color:var(--ink);font:18px/1.6 "Lexend","Atkinson Hyperlegible",system-ui,sans-serif;padding:16px;box-sizing:border-box}
+header{width:100%;display:flex;justify-content:center;padding:4px 0 12px;border-bottom:2px solid var(--line)}
+header b{padding:6px 16px;border:2px solid var(--line);border-radius:99px;background:var(--card)}
+main{max-width:440px;width:100%;background:var(--card);border:2px solid var(--line);border-top:8px solid var(--accent);border-radius:20px;padding:22px;box-sizing:border-box}
+h1{margin:0 0 6px;font-size:1.4rem}p{color:var(--muted);margin:0 0 14px}
+form{display:flex;flex-direction:column;gap:8px}label{font-weight:600}
+input{font:inherit;padding:10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);color:var(--ink)}
+input:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button{font:inherit;font-weight:600;min-height:48px;border-radius:12px;border:2px solid var(--accent);background:var(--accent);color:var(--card);cursor:pointer}
+#m{margin:12px 0 0;min-height:1.6em}#m.bad{color:var(--bad);font-weight:600}
+.shared{display:flex;gap:8px;align-items:flex-start;font-weight:400;font-size:.9rem;color:var(--muted);margin:4px 0}.shared input{width:20px;height:20px;margin-top:3px;accent-color:var(--accent)}
+nav{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;font-size:.84rem;color:var(--muted)}nav a{color:inherit;min-height:32px;display:inline-flex;align-items:center}
+</style>
+</head>
+<body data-state="locked">
+<header><b>Miss Rojo's Classroom</b></header>
+<main>
+<h1>Teacher Portal</h1>
+<p>Enter your passkey once on this device.</p>
+<form id="f"><label for="t">Passkey</label><input id="t" type="password" autocomplete="current-password" spellcheck="false" required>
+<label class="shared"><input type="checkbox" id="shared"> Shared computer (a classroom or projector PC): forget the passkey after 8 hours</label><button type="submit">Open</button></form>
+<p id="m" role="status" aria-live="polite"></p>
+</main>
+<nav aria-label="More"><a href="https://rojoclassroom.app/legal.html">Legal notice</a><a href="https://rojoclassroom.app/privacy.html">Privacy</a><a href="https://rojoclassroom.app/">Pupil site</a></nav>
+<script type="text/plain" id="ct">kfusArb+YO5dL3C4mumbNnSmmMXPJHfbm3sWdWb05Fo+/vk2a8us63hMa8M3EleAdJJki3/jDCfagAN/cIOqF/fJ8ijScQD4oJ6lBiQdWS2o/BX9NIo/m6PyRfIAL/yxe8ZONIeIaV5uNoonGFu5tIDUN0wcUuQFaE3S9H5Q9R/n07R/Ohc0TeCi+u20YITCusPbd+vMN+IEvbcD4RUW3UVKnTTuiEefmzm/mZ1BBT1IT5ygHTaDuGaPK6knna3XWUVH3SBvwWhG8LU1rXg3uNAXCtr9jX+0VeaCvqoy213BJoa3NsdsQ289fF3hext9gDq3kw9y2NdbIt0eL+Mkfl4DRIcOVII4A332LHMETImRIgCsMgvoiiLR3y31JdzKnqwwQLRTTtyjy1A7VEpm3lf6i+HgcVTlRu+QXxIii8hxCE/F6re5T6L76ZL/HcGuaHhXT4z63dXHgLbRa/bcRga7GW7xoYnNQbdN5/2PumlJRdWdJH0BMkrG3L4hOU6DsL/msDf8Hq9T0P1qb0v72P4Yx72JPWG6q3nhMAnBFnJ58X58Cb6FkGFDDSwcVHMrVynJfjxwdU6ngTuvd3FEoa4aIP68w9tajS7auH12Z90G98ZTWbcU5L03yQGu3l2l2OdigmJTKoxcR9oBNmGXBRtRV0ixOt3qhETnga3VF1pzNMnLiDiWzvc6UXLjDNApfN4tTNLXyfM9xqUL1rIIjfPC+JHhSsI6S3coHYhUaWJdtMAidF782gRGSxZbuKMrC48IEXHJ2E1isuFxRZ8iTsFEIinvW+pfQ4woa+Ff+JhHKx9eh4/38clo9I3cbHKdtPvvOhPPnLcUBArnocLPs+tCOorJvUkLF2Xt6CkgYj38CRjBdp3JDf1CisjK+yvkKVv7C3CFmmbCvBfSdXWxRBLDR1X0+lob34Jk6/uKayzzC9I+DM7Dzzo4R/cCi/otmcntX07AU6G5L34aVQPZ/KbvCPBllsafVW4gJDLjk6s78q3Br43OZ0uHbADfa0aw4hC81suGcNuIen8dt8MbKPQgrGhCYD+bVL0rp1eXQDgpwpgzXE1qDO3Uw46IRDpVxB5uNhlTEY68ke5IDe8TO47VA2F4XHh6qyzHHrEAGAe6LHjC9rBKEoYII4UmH/v3iWyOMVFjFSRDU4531+4rWFkY1nJ4eYccQHMQ/WiA5i6BfqepzToGosiMsaFgy4B8QtfvWdhcI62axgaHxnYqycgd4aJxCoo1n4n9zK00X5lo2FjhdaLDl6yrODvGsHcD8WGESTOfyKrHn5aS0eIIzvVISBeL1HaGZWTNeX7SRQIQdDTx3VoP/XEj0JEsfFfLCmecfes3TmUxlilFHj0LprAMb+tNVUcVyFnkgByfmMsLOLmeMmDFTcVqKW4eLeeZEH/6vYk95vkYJumObMHGGRRHadCGg8qoo1/MLfowb0LI1eHTXkPP8/yvpJk0ARMqevXShy0jBNaA8kpbf0wrS4dlm34Nl+xxreZMKgNKXRWifGyFgCgF12zRPcdTd00PACM88dhEafsqfqUp+T0DhaVu68mBnI+Rwb+ARKEC3QlY4RM0YvakRDgABWdlAaU67w+boZygxh5/Q7vcRfIe0o0/URfX9GOG/qBa9z/fJAMiEBQk4oBr7yWV3r582KazuIB3q4AXBvv3ohVERyQM/Bikt/pdrU7FUUnIFQQ71RTGl8ak3TB0AoF9bg5C2rTI+bMdv6m3hAGzE7odnqmZuqwaoq31FYqm4dlUA51VPHBBCwEXxVEFrRNTkS2la44jbTPhhjF0+QfQ9IEfm8l1Rgh3g19T4Xkj6W8MRUFKlmplxGp7pIQI6vy9/3DORmdOi44PQEpCaMFXkKJrrTG3BCsSyR7vRswk1vNSc4E=</script>
+<script src="../../unlock.js"></script>
+</body>
+</html>
